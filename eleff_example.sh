@@ -58,7 +58,7 @@ then
 
 
    #Commit (Commit everything?)
-   git commit .
+   git commit . -m "build $new_tag"
    
    #Add the new tag before committing
    git tag $new_tag
@@ -66,12 +66,17 @@ then
 else #New branch else statement
    #Helpful output
    echo "creating branch $branch_name"
-   git checkout -b $branch_name
-   git checkout $branch_name
-   git commit .
 
    #New tag will have a build number of zero
    new_tag=$version.0
+
+   #Helpful output
+   echo "new tag = $new_tag"
+
+   git checkout -b $branch_name
+   git checkout $branch_name
+   git commit . -m "build $new_tag"
+
    #Helpful output
    echo "new build = $new_tag"
 
