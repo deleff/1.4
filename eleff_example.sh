@@ -18,7 +18,10 @@ then
    echo "Branch name $branch_name already exists."
 
 #   tag=`git describe --tags`
-   echo "last tag was `git describe --abbrev=0 --tags ` "
+   last_tag=`git describe --abbrev=0 --tags `
+   new_tag=`echo $last_tag | cut -d. -f3 `
+   echo "The last tag was $last_tag"
+   echo "The new tag is $new_tag"
 
 else
    echo "creating branch $branch_name"
